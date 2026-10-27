@@ -1,0 +1,11 @@
+bin/
+obj/
+dist/
+*.apk
+*.aab
+*.sav
+*.dsv
+*.nds
+*.pk4
+*.rar
+HANDOFF.md

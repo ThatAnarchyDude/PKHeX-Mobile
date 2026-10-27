@@ -1,0 +1,35 @@
+diff --git a/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Legalization/Legalizer.cs b/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Legalization/Legalizer.cs
+index 4c7bf16..8ede105 100644
+--- a/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Legalization/Legalizer.cs
++++ b/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Legalization/Legalizer.cs
+@@ -117,7 +117,8 @@ public static class Legalizer
+     public static void Dump(RegenTemplate set, bool invalid = false)
+     {
+         var msg = (invalid ? $"[Invalid] [DateTime: {DateTime.Now}]" : $"[Timeout : {Timeout} seconds] [DateTime: {DateTime.Now}]") + Environment.NewLine + set.Text + Environment.NewLine;
+-        System.IO.File.AppendAllText("error_log.txt", msg);
++        try { System.IO.File.AppendAllText("error_log.txt", msg); }
++        catch (Exception) { /* PKHeX Mobile: the working folder may be read-only on Android; the log is optional */ }
+     }
+ 
+     /// <summary>
+diff --git a/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Util/Version.cs b/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Util/Version.cs
+index 62c80ac..d8ab82c 100644
+--- a/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Util/Version.cs
++++ b/Auto-Legality-Mod/PKHeX.Core.AutoMod/AutoMod/Util/Version.cs
+@@ -14,14 +14,14 @@ public static class ALMVersion
+         public readonly Version? AlmVersionCurrent = GetCurrentVersion("PKHeX.Core.AutoMod");
+ 
+         public readonly Version? CoreVersionCurrent = GetCurrentVersion("PKHeX.Core");
+-        public readonly Version? CoreVersionLatest = GetLatestCoreVersion();
++        public readonly Version? CoreVersionLatest = null; // local patch: never call GitHub from the phone app
+     }
+ 
+     /// <summary>
+     /// Checks for plugin mismatch. If "EnableDevMode" is enabled it will allow a user to skip update warnings until the next release. Will otherwise check plugin mismatch for current versions.
+     /// </summary>
+     /// <returns>True if a plugin mismatch is found. False if any of the versions are null or no mismatch found.</returns>
+-    public static bool GetIsMismatch() => GetIsMismatch(currentCore: Versions.CoreVersionCurrent, currentALM: Versions.AlmVersionCurrent, latestCore: Versions.CoreVersionLatest);
++    public static bool GetIsMismatch() => false; // local patch: the plugin and core are one build here
+ 
+     public static bool GetIsMismatch(Version? currentCore, Version? currentALM, Version? latestCore)
+     {
