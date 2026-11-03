@@ -9,8 +9,8 @@
     <LangVersion>14</LangVersion>
     <ApplicationTitle>PKHeX Mobile</ApplicationTitle>
     <ApplicationId>com.corvus.pkhexmobile</ApplicationId>
-    <ApplicationDisplayVersion>0.31</ApplicationDisplayVersion>
-    <ApplicationVersion>31</ApplicationVersion>
+    <ApplicationDisplayVersion>0.32</ApplicationDisplayVersion>
+    <ApplicationVersion>32</ApplicationVersion>
     <SupportedOSPlatformVersion>24.0</SupportedOSPlatformVersion>
     <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
@@ -23,7 +23,7 @@
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
   <PropertyGroup>
-    <!-- The core and Auto-Legality library come from a sibling clone of PKHeX-Psyduck-Yellow (tag pkhex-psyduck-yellow-v5, see README) -->
+    <!-- The core and Auto-Legality library come from a sibling clone of PKHeX-Psyduck-Yellow (tag pkhex-psyduck-yellow-v8, see README) -->
     <PsyduckYellowCoreProject>$(MSBuildThisFileDirectory)..\PKHeX-Psyduck-Yellow\PKHeX.Core\PKHeX.Core.csproj</PsyduckYellowCoreProject>
   </PropertyGroup>
   <ItemGroup>
